@@ -8,11 +8,11 @@ class MainController extends Controller
 {
     public function index()
     {
-        return "Ласкаво просимо на сайт хімчистки!";
+        return view('home');
     }
 
     public function about()
     {
-        return "Цей сайт дозволяє замовляти послуги хімчистки онлайн.";
+        return view('about');
     }
 }

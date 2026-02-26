@@ -15,30 +15,19 @@ class ServiceController extends Controller
 
     public function index()
     {
-        $output = "<h1>Каталог послуг хімчистки</h1><ul>";
-
-        foreach ($this->services as $id => $service) {
-            $output .= "<li>
-                <a href='/services/$id'>$service</a>
-            </li>";
-        }
-
-        $output .= "</ul>";
-
-        return $output;
+        return view('services', [
+            'services' => $this->services
+        ]);
     }
 
     public function show($id)
     {
-        if (isset($this->services[$id])) {
-
-            return "
-                <h1>" . $this->services[$id] . "</h1>
-                <p>Опис послуги хімчистки.</p>
-                <a href='/services'>Назад до каталогу</a>
-            ";
+        if (!isset($this->services[$id])) {
+            abort(404);
         }
 
-        return "Послугу не знайдено";
+        return view('service', [
+            'service' => $this->services[$id]
+        ]);
     }
 }
