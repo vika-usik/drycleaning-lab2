@@ -14,3 +14,4 @@ Route::get('/services/{id}', [ServiceController::class, 'show'])->name('services
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('services', AdminServiceController::class);
 });
+

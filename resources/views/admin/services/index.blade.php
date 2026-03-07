@@ -4,6 +4,9 @@
 
 @section('content')
     <h1>Список послуг</h1>
+    <a href="{{ route('admin.services.create') }}" class="btn btn-success mb-3">
+        Додати послугу
+    </a>
 
     <table class="table table-bordered">
         <thead>

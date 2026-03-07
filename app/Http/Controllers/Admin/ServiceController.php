@@ -22,7 +22,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.services.create');
     }
 
     /**
@@ -30,7 +30,16 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+            'price' => 'required|numeric|min:1',
+            'description' => 'nullable'
+        ]);
+
+        Service::create($validated);
+
+        return redirect()->route('admin.services.index')
+            ->with('success', 'Послугу успішно додано!');
     }
 
     /**
@@ -63,6 +72,7 @@ class ServiceController extends Controller
     public function destroy(Service $service)
     {
         $service->delete();
+
         return redirect()->route('admin.services.index')
             ->with('success', 'Послугу видалено');
     }

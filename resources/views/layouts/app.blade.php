@@ -23,7 +23,15 @@
     </nav>
 
     <div class="container mt-4">
+
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
         @yield('content')
+
     </div>
 
     <footer class="bg-dark text-white text-center p-3 mt-5">
