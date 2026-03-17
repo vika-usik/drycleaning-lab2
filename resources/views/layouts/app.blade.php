@@ -17,7 +17,23 @@
 
             <div>
                 <a class="text-white me-3" href="/">Головна</a>
-                <a class="text-white" href="/services">Каталог</a>
+                <a class="text-white me-3" href="/services">Каталог</a>
+
+                @auth
+                    <span class="text-white me-3">
+                        Привіт, {{ Auth::user()->name }}
+                    </span>
+
+                    <form method="POST" action="{{ route('logout') }}" style="display:inline;">
+                        @csrf
+                        <button class="btn btn-sm btn-danger">Вихід</button>
+                    </form>
+                @endauth
+
+                @guest
+                    <a class="text-white me-2" href="{{ route('login') }}">Увійти</a>
+                    <a class="text-white" href="{{ route('register') }}">Реєстрація</a>
+                @endguest
             </div>
         </div>
     </nav>
